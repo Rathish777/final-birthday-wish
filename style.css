@@ -70,16 +70,37 @@ body {
     color: white;
 }
 
+/* --- LAYOUT BASICS --- */
+.section {
+    display: none;
+    min-height: 100svh;
+    width: 100%;
+    position: relative;
+    transition: opacity 1s ease-in-out;
+}
+
+.section.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+}
+
 /* --- INTRODUCTION SCREEN --- */
 #intro-screen {
     background: radial-gradient(circle at center, #fffafb 0%, #ffe0e9 40%, #ffccd5 100%);
     z-index: 100;
     overflow: hidden;
     min-height: 100svh;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+#intro-screen.active {
+    display: flex;
 }
 
 .intro-overlay {
@@ -216,6 +237,9 @@ body {
     text-align: center;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-padding {
@@ -227,11 +251,14 @@ body {
     background-color: transparent;
     display: none;
     overflow-x: hidden;
-    align-items: flex-start;
+    width: 100%;
 }
 
 #main-experience.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 /* --- HERO SECTION --- */
@@ -240,9 +267,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100svh;
+    min-height: 80vh;
     text-align: center;
-    padding: 60px 0;
+    padding: 40px 0;
     gap: 20px;
 }
 
@@ -267,14 +294,14 @@ body {
 
 .message-card {
     background: var(--white);
-    padding: 40px;
+    padding: clamp(20px, 5vw, 40px);
     border-radius: 30px;
     box-shadow: 0 20px 40px var(--shadow);
-    max-width: 700px;
+    width: min(700px, 90vw);
     margin: 0 auto 40px;
     position: relative;
     border: 3px solid var(--secondary-color);
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 3vw, 1.3rem);
     line-height: 1.8;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -319,7 +346,7 @@ body {
 
 /* --- CAKE SECTION --- */
 .cake-section {
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -422,7 +449,7 @@ body {
 
 /* --- LOVE LETTER --- */
 .letter-section {
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -518,7 +545,7 @@ body {
 
 /* --- GALLERY --- */
 .gallery {
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -549,12 +576,13 @@ body {
     box-shadow: 0 10px 25px var(--shadow);
     transform: rotate(var(--rotation));
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    width: 220px;
+    width: min(220px, 40vw);
 }
 
 .photo-frame img {
     width: 100%;
-    height: 250px;
+    height: auto;
+    aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 2px;
 }
@@ -567,7 +595,7 @@ body {
 
 /* --- GIFT SECTION --- */
 .gift-section {
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -627,7 +655,7 @@ body {
 
 /* --- CELEBRATION --- */
 .celebrate-section {
-    padding: 80px 0;
+    padding: 60px 0;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -656,15 +684,26 @@ body {
     box-shadow: 0 0 30px var(--primary-color);
 }
 
-/* Footer */
-.final-wish {
-    padding: 80px 20px;
-    background: var(--primary-color);
-    color: white;
+/* --- LOVE QUOTES --- */
+.love-quote {
+    padding: 40px 20px;
     text-align: center;
-    border-radius: 50px 50px 0 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: var(--text-color);
+    opacity: 0.8;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.quote-container {
     width: 100%;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
 }
 
 .final-wish h3 {

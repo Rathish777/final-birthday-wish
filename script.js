@@ -87,6 +87,54 @@ document.addEventListener('DOMContentLoaded', () => {
     typeIntro();
     createIntroDecorations();
 
+    // --- INTERACTIVE LOVE NOTES ---
+    function createLoveNotes() {
+        const notes = [
+            "You're my everything! ❤️",
+            "My heart beats for you 💓",
+            "The most beautiful soul... ✨",
+            "I love your smile! 😊",
+            "Forever and always ♾️",
+            "You are my sunshine ☀️",
+            "Simply the best! 🌟",
+            "My favorite person ❤️"
+        ];
+
+        const container = document.getElementById('main-experience');
+        if (!container) return;
+
+        // Create 8 random notes across the page
+        for (let i = 0; i < 8; i++) {
+            const note = document.createElement('div');
+            note.classList.add('love-note');
+            note.innerHTML = '❤️';
+
+            // Position them randomly but within reasonable bounds
+            note.style.left = Math.random() * 80 + 10 + 'vw';
+            note.style.top = Math.random() * 80 + 10 + 'vh';
+            note.style.animationDelay = Math.random() * 2 + 's';
+
+            note.addEventListener('click', (e) => {
+                e.stopPropagation();
+                createHeartBurst();
+
+                // Show tooltip
+                const tooltip = document.createElement('div');
+                tooltip.classList.add('note-tooltip');
+                tooltip.innerText = notes[Math.floor(Math.random() * notes.length)];
+                tooltip.style.left = e.clientX + 'px';
+                tooltip.style.top = (e.clientY - 50) + 'px';
+                tooltip.style.transform = 'translateX(-50%)';
+
+                document.body.appendChild(tooltip);
+                setTimeout(() => tooltip.remove(), 2000);
+            });
+
+            container.appendChild(note);
+        }
+    }
+
+    // Add this call to the openSurpriseBtn event listener
     openSurpriseBtn.addEventListener('click', () => {
         bgMusic.play().catch(() => {});
         createConfetti();
@@ -99,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 startHeroTypewriter();
                 initScrollReveal();
                 startAmbientAnimations();
+                createLoveNotes(); // <--- Added this
             }, 100);
         }, 1000);
     });
@@ -215,12 +264,17 @@ document.addEventListener('DOMContentLoaded', () => {
         h.style.fontSize = 'clamp(2rem, 8vw, 4rem)';
         h.style.fontFamily = 'Dancing Script, cursive';
         h.style.color = 'var(--accent-color)';
-        h.style.zIndex = '3000';
+        h.style.zIndex = '10000';
         h.style.pointerEvents = 'none';
         h.style.textAlign = 'center';
         h.style.textShadow = '0 0 20px rgba(255,255,255,0.8)';
-        h.style.width = '90%';
-        h.style.maxWidth = '1100px';
+        h.style.width = 'auto';
+        h.style.maxWidth = '90vw';
+        h.style.margin = '0';
+        h.style.padding = '0';
+        h.style.boxSizing = 'border-box';
+        h.style.whiteSpace = 'normal';
+        h.style.wordWrap = 'break-word';
         h.style.animation = 'modalPopup 0.5s ease forwards';
         document.body.appendChild(h);
 
