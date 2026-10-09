@@ -1,0 +1,646 @@
+:root {
+    --primary-color: #F43F70;
+    --secondary-color: #FF8FA3;
+    --bg-color: #FFF0F4;
+    --bg-pale: #FFE0E9;
+    --text-color: #650D2B;
+    --accent-color: #F43F70;
+    --white: #FFFFFF;
+    --gold: #FFD98A;
+    --shadow: rgba(0, 0, 0, 0.05);
+    --glow: rgba(244, 63, 112, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, .script-font {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Layout */
+.section {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.section.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* 1. INTRO SCREEN */
+#intro-screen {
+    background: radial-gradient(circle, #ffe0e9 0%, #fff0f4 100%);
+    z-index: 100;
+    overflow: hidden;
+}
+
+.intro-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(255,255,255,0.4) 100%);
+    pointer-events: none;
+}
+
+.intro-content {
+    z-index: 10;
+    text-align: center;
+}
+
+.intro-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    min-height: 4rem;
+}
+
+#intro-cursor {
+    font-weight: bold;
+    color: var(--primary-color);
+    animation: blink 0.7s infinite;
+}
+
+.btn-surprise {
+    padding: 18px 35px;
+    font-size: 1.4rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px var(--glow);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.btn-surprise:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px var(--glow);
+}
+
+/* 2. NAVIGATION */
+.main-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 10px 25px;
+    border-radius: 30px;
+    z-index: 100;
+    border: 1px solid rgba(244, 63, 112, 0.2);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 3. HERO SECTION */
+.hero-section {
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+.hero-label {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: block;
+    animation: fadeInUp 1s ease;
+}
+
+.main-title {
+    font-size: 4.5rem;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.message-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    position: relative;
+    border: 2px solid var(--secondary-color);
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.card-decoration {
+    position: absolute;
+    font-size: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-decoration.top { top: -25px; }
+.card-decoration.bottom { bottom: -25px; }
+
+.extra-love-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-love {
+    padding: 18px 40px;
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    box-shadow: 0 10px 20px var(--glow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-love:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 20px 40px var(--glow);
+}
+
+/* 4. CAKE SECTION */
+.cake-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.cake-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cake-svg-container {
+    width: 350px;
+    height: 350px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cake-svg-container:hover {
+    transform: scale(1.05);
+}
+
+.cake-part {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cakeEntrance 0.8s ease forwards;
+}
+
+@keyframes cakeEntrance {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.flame {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flame.out {
+    opacity: 0;
+    transform: scale(0);
+}
+
+#cake-msg {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+/* 5. LOVE LETTER */
+.letter-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.envelope-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 40px auto;
+    cursor: pointer;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ffc1cc;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #ff8fa3;
+    z-index: 3;
+    transition: transform 0.6s ease;
+    transform-origin: top;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffc1cc;
+    z-index: 2;
+    border-radius: 0 0 10px 10px;
+}
+
+.envelope-letter {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background: #fffaf0;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1;
+    transition: transform 0.8s ease, opacity 0.5s ease;
+    box-shadow: 0 5px 15px var(--shadow);
+    overflow: hidden;
+}
+
+.envelope-letter.open {
+    transform: translateY(-150px);
+    height: auto;
+    z-index: 10;
+    opacity: 1;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.letter-content {
+    text-align: left;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.letter-signature {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.letter-hint {
+    margin-top: 20px;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* 6. MEMORIES GALLERY */
+.gallery {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.photo-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    perspective: 1000px;
+}
+
+.photo-frame {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px var(--shadow);
+    transform: rotate(var(--rotation));
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 220px;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.2) translateZ(50px);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* 7. GIFT SECTION */
+.gift-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.gift-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gift-container:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.gift-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gift-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--primary-color);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.gift-lid {
+    position: absolute;
+    top: 20px;
+    left: -5%;
+    width: 110%;
+    height: 40px;
+    background: var(--accent-color);
+    border-radius: 5px;
+    z-index: 2;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.gift-ribbon {
+    position: absolute;
+    left: 45%;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    background: var(--white);
+    z-index: 1;
+}
+
+/* 8. CELEBRATION */
+.celebrate-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.btn-celebrate {
+    padding: 20px 50px;
+    font-size: 1.8rem;
+    background: white;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-celebrate:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px var(--primary-color);
+}
+
+/* Footer */
+.final-wish {
+    padding: 80px 20px;
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    border-radius: 50px 50px 0 0;
+}
+
+.final-wish h3 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    border: 5px solid var(--secondary-color);
+    animation: modalPopup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Sound Control */
+.sound-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#muteBtn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes modalPopup {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ambient Particles */
+.heart {
+    position: absolute;
+    color: var(--primary-color);
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: 100;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: sparkleFade 0.8s linear forwards;
+}
+
+@keyframes sparkleFade {
+    to { transform: scale(2); opacity: 0; }
+}
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 3rem;
+    z-index: 1;
+    animation: floatUpBalloon linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUpBalloon {
+    to { transform: translateY(-120vh) rotate(20deg); }
+}
+
+@media (max-width: 600px) {
+    .main-title { font-size: 3rem; }
+    .main-nav { width: 90%; justify-content: center; font-size: 0.8rem; }
+    .nav-link { padding: 5px 8px; }
+    .cake-svg-container { width: 300px; height: 300px; }
+    .message-card { padding: 20px; font-size: 1.1rem; }
+}

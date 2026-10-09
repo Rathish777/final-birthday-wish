@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pooja! 💗</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sound Control -->
+    <div id="sound-control" class="sound-control">
+        <button id="muteBtn">🔊 Sound On</button>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 1. INTRODUCTION SCREEN -->
+    <div id="intro-screen" class="section active">
+        <div class="intro-overlay"></div>
+        <div class="intro-decorations" id="intro-decorations"></div>
+        <div class="intro-content">
+            <div class="intro-text-container">
+                <p id="intro-text" class="intro-text"></p>
+                <span id="intro-cursor">|</span>
+            </div>
+            <button id="openSurpriseBtn" class="btn-surprise">Open Your Surprise 💖</button>
+        </div>
+    </div>
+
+    <!-- 2. MAIN EXPERIENCE -->
+    <div id="main-experience" class="section">
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section reveal">
+                <div class="hero-label">A Special Day ✨</div>
+                <h1 class="main-title">Happy Birthday, Pooja! ❤️</h1>
+
+                <div class="message-card">
+                    <div class="card-decoration top">💖</div>
+                    <p id="birthday-message"></p>
+                    <span id="message-cursor">|</span>
+                    <div class="card-decoration bottom">💖</div>
+                </div>
+
+                <div class="extra-love-container">
+                    <button id="loveBtn" class="btn-love">Press for Extra Love! 💗</button>
+                </div>
+            </section>
+
+            <!-- Cake Section -->
+            <section id="cake-section" class="cake-section reveal">
+                <h2 class="section-heading">Make a Wish! ✨</h2>
+                <div class="cake-wrapper">
+                    <div class="cake-svg-container" id="cakeContainer">
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="cake-svg">
+                            <defs>
+                                <linearGradient id="cakeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ff8fa3;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff4d6d;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Cake Board -->
+                            <ellipse class="cake-part" style="animation-delay: 0.1s" cx="200" cy="340" rx="120" ry="30" fill="#d4af37" />
+                            <ellipse class="cake-part" style="animation-delay: 0.2s" cx="200" cy="335" rx="110" ry="25" fill="#f1c40f" />
+                            <!-- Bottom Tier -->
+                            <rect class="cake-part" style="animation-delay: 0.3s" x="100" y="240" width="200" height="80" rx="15" fill="url(#cakeGradient)" />
+                            <path class="cake-part" style="animation-delay: 0.4s" d="M100 260 Q120 270 140 260 T180 260 T220 260 T260 260 T300 260" fill="none" stroke="#fff" stroke-width="4" opacity="0.5" />
+                            <!-- Top Tier -->
+                            <rect class="cake-part" style="animation-delay: 0.5s" x="130" y="170" width="140" height="70" rx="12" fill="#ffb3c1" />
+                            <path class="cake-part" style="animation-delay: 0.6s" d="M130 190 Q140 200 150 190 T170 190 T190 190 T210 190 T230 190 T270 190" fill="none" stroke="#fff" stroke-width="3" opacity="0.6" />
+                            <!-- Candles -->
+                            <g class="candle-group">
+                                <g class="candle cake-part" style="animation-delay: 0.7s" id="candle-0" data-index="0">
+                                    <rect x="145" y="140" width="8" height="30" fill="#fff" />
+                                    <path class="flame" d="M149 135 Q152 130 149 125 Q146 130 149 135" fill="#ffcc00" filter="url(#glow)" />
+                                </g>
+                                <g class="candle cake-part" style="animation-delay: 0.8s" id="candle-1" data-index="1">
+                                    <rect x="175" y="130" width="8" height="40" fill="#fff" />
+                                    <path class="flame" d="M179 125 Q182 120 179 115 Q176 120 179 125" fill="#ffcc00" filter="url(#glow)" />
+                                </g>
+                                <g class="candle cake-part" style="animation-delay: 0.9s" id="candle-2" data-index="2">
+                                    <rect x="205" y="120" width="8" height="50" fill="#fff" />
+                                    <path class="flame" d="M209 115 Q212 110 209 105 Q206 110 209 115" fill="#ffcc00" filter="url(#glow)" />
+                                </g>
+                                <g class="candle cake-part" style="animation-delay: 1.0s" id="candle-3" data-index="3">
+                                    <rect x="235" y="130" width="8" height="40" fill="#fff" />
+                                    <path class="flame" d="M239 125 Q242 120 239 115 Q236 120 239 125" fill="#ffcc00" filter="url(#glow)" />
+                                </g>
+                                <g class="candle cake-part" style="animation-delay: 1.1s" id="candle-4" data-index="4">
+                                    <rect x="265" y="140" width="8" height="30" fill="#fff" />
+                                    <path class="flame" d="M269 135 Q272 130 269 125 Q266 130 269 135" fill="#ffcc00" filter="url(#glow)" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <p id="cake-msg">Click the candles to blow them out! 🕯️</p>
+                    <div id="candle-counter" class="candle-counter"></div>
+                    <button id="relightBtn" class="btn-relight" style="display:none">Relight the Candles 🕯️</button>
+                </div>
+            </section>
+
+            <!-- Love Letter Section -->
+            <section id="letter-section" class="letter-section reveal">
+                <h2 class="section-heading">A Little Letter Just for You 💌</h2>
+                <div class="envelope-container">
+                    <div class="envelope" id="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-body"></div>
+                        <div class="envelope-letter" id="letterPaper">
+                            <div class="letter-content">
+                                <h3 id="letter-heading"></h3>
+                                <p id="letter-text"></p>
+                                <p class="letter-signature" id="letter-sig"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="letter-hint">Click the envelope to open it! ✉️</p>
+                </div>
+            </section>
+
+            <!-- Memory Gallery -->
+            <section id="gallery-section" class="gallery reveal">
+                <h2 class="section-heading">Our Precious Moments 📸</h2>
+                <div class="photo-grid">
+                    <div class="photo-frame"><img src="photo1.jpg" alt="Memory 1" onclick="openImage(this.src)"></div>
+                    <div class="photo-frame"><img src="photo2.jpg" alt="Memory 2" onclick="openImage(this.src)"></div>
+                    <div class="photo-frame"><img src="photo3.jpg" alt="Memory 3" onclick="openImage(this.src)"></div>
+                </div>
+            </section>
+
+            <!-- Surprise Gift Section -->
+            <section id="gift-section" class="gift-section reveal">
+                <h2 class="section-heading">A Little Surprise Awaits You 🎁</h2>
+                <div class="gift-container" id="giftBox">
+                    <div class="gift-box">
+                        <div class="gift-lid"></div>
+                        <div class="gift-body"></div>
+                        <div class="gift-ribbon"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Celebration Section -->
+            <section class="celebrate-section reveal">
+                <button id="celebrateBtn" class="btn-celebrate">Let's Celebrate! 🎉</button>
+            </section>
+
+            <footer class="final-wish reveal">
+                <div class="cake-icon">🎂</div>
+                <h3>I Love You Forever & Always! ♾️</h3>
+                <p id="final-sig">Forever Yours, Squirel</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="loveModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="loveMessage"></div>
+        </div>
+    </div>
+
+    <div id="giftModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="giftMessage"></div>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-img" id="fullImage">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
